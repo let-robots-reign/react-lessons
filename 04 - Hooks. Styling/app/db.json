@@ -1,0 +1,24 @@
+{
+  "words": [
+    {
+      "id": 1,
+      "word": "cat",
+      "translation": "кошка"
+    },
+    {
+      "id": 2,
+      "word": "dog",
+      "translation": "собака"
+    },
+    {
+      "word": "door",
+      "translation": "дверь",
+      "id": 3
+    },
+    {
+      "word": "chair",
+      "translation": "стул",
+      "id": 4
+    }
+  ]
+}

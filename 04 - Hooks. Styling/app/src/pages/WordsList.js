@@ -1,25 +1,25 @@
 import Button from "../components/Button";
 import WordRow from "../components/WordRow";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Modal from "../components/Modal";
 import CreateWordForm from "../components/CreateWordForm";
-
-const words = [
-    {
-        word: 'cat',
-        translation: 'кошка',
-    },
-    {
-        word: 'dog',
-        translation: 'собака'
-    }
-];
+import {getWords, postWord} from "../utils/words";
 
 const WordsList = () => {
+    const [words, setWords] = useState([]);
     const [showCreateModal, setShowCreateModal] = useState(false);
 
+    useEffect(() => {
+        getWords()
+            .then((res) => res.json())
+            .then((resJSON) => setWords(resJSON))
+            .catch((err) => console.log(err));
+    }, []);
+
     const createWord = (word) => {
-        words.push(word);
+        postWord(word)
+            .then((res) => setWords([...words, word]))
+            .catch((err) => console.log(err));
         setShowCreateModal(false);
     };
 
